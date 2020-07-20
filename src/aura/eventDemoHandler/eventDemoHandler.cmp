@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="message" type="String" />
+    <aura:attribute name="intValue" type="Integer" default="0" />
+    <aura:handler name="cmpEvent" event="c:eventDemo" action="{!c.handleEvent}" />
+    
+    <c:eventDemoNotifier />
+    message : {!v.message}
+    Int Value : {!v.intValue}
+    
+</aura:component>

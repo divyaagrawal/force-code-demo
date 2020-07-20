@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>https://trailhead.salesforce.com/trails/automate_business_processes/modules/screen_flow_distribution/units/screen_flow_distribution_action</description>
+    <flowDefinition>Hello_World</flowDefinition>
+    <label>Flow Action</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

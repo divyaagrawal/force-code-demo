@@ -1,0 +1,37 @@
+<aura:component controller="CreateCandidateRecord" 
+				implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+				access="global" >
+    
+    <!-- Include Static Resource-->
+    <ltng:require styles="/resource/bootstrap/css/bootstrap.min.css" 
+				  scripts="/resource/bootstrap/js/jquery.js,/resource/bootstrap/js/bootstrap.min.js"/>
+    
+    <!-- Define Attribute-->
+    <aura:attribute name="candidate" type="Candidate__c" default="{'sobjectType': 'Candidate__c',
+                         'First_Name__c': '',
+                         'Last_Name__c': '',
+                         'Email__c': '', 
+                         'SSN__c': ''
+                       }"/>
+    
+    
+    <div class="container-fluid" style="padding:100px;">
+        <h3>Please Enter The Candidate Information</h3>
+        <div class="form-group">
+            <lightning:input label="First Name" class="form-control" value="{!v.candidate.First_Name__c}"/>
+        </div>
+        <div class="form-group">
+            <lightning:input label="Last Name" class="form-control" value="{!v.candidate.Last_Name__c}"/>
+        </div>
+        <div class="form-group">
+            <lightning:input  label="Email" class="form-control" value="{!v.candidate.Email__c}"/>
+        </div>
+        <div class="form-group">
+            <lightning:input label="SSN" class="form-control" value="{!v.candidate.SSN__c}"/>
+        </div><br />
+         <div class="col-md-4 text-center">
+             <lightning:button label="Save Candidate record"  onclick="{!c.create}"/>
+  </div>
+    </div>
+   
+</aura:component>

@@ -1,0 +1,126 @@
+<!--
+* @Component Name	  : OrderWizard
+* @Story 			  : -
+* @Release 			  : -
+* @Author             : Divya Agrawal
+* @Version            : 1.0
+* @Date 		      : 16/03/2020
+* @Updated By 		  : Divya Agrawal
+-->
+<aura:component controller="OrderWizardController" access="GLOBAL" >
+    
+    <!-- Attributes to manage records -->
+    <aura:attribute name="records" type="Object" />
+    <aura:attribute name="rowNumberOffset" type="Integer" default="0"/>
+    <aura:attribute name="rowsToLoad" type="Integer" default="5"/>
+    <aura:attribute name="rows" type="Integer" default="0"/>
+    
+    <!-- Attributes for support -->
+    <aura:attribute name="variant" type="String" default="Neutral"/>
+    
+    <!-- Called on loading of page -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <!-- Attributes for Infinite loading custom functionality -->
+    <aura:attribute name="loadMoreMsg" type="String" default=""/>
+    <aura:attribute name="loadMore" type="Boolean" default="false"/>    
+    <aura:attribute name="isloadingData" type="Boolean" default="false"/>  
+    
+    <!-- Loading spinner -->
+    <aura:attribute name="varSpinnerCls" type="String" default="slds-hide"/>
+    <lightning:spinner aura:id="mySpinner" variant="brand" class="{!v.varSpinnerCls}" size="large" alternativeText="Processing ..."/>
+    <aura:attribute name="myEnterSearch" type="String" default = ''/>
+    
+    <div class="slds-p-horizontal_large">
+        
+        <div oninput="{! c.handleInput}" onkeyup="{! c.searchKeyChange}" style="width:300px">
+            <lightning:input
+                             aura:id="enter-search"
+                             name="enter-search"
+                             label="Search when user hits the 'enter' key"
+                             type="search"
+                             value="{!v.myEnterSearch}"
+                             />      
+        </div>
+    </div>
+    
+    <div class="slds-p-horizontal_large slds-p-top_large">
+        <h1 class="slds-text-heading--medium">Select Device</h1>
+        <br/>
+        <!--Contact List Table-->
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer" role="grid">      
+            <thead>  
+                <tr class="slds-text-title">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Device">Device</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Level">Level</div>
+                    </th>
+                    
+                    <th scope="col">
+                        <div class="slds-truncate" title="Constant">Const.</div>
+                    </th>
+                    
+                    <th scope="col">
+                        <div class="slds-truncate" title="Price">Price</div>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>        
+                <aura:iteration items="{!v.records}" var="record">
+                    <tr>
+                        <th scope="row">
+                            <div class="slds-truncate tableData" title="{!record.Name}">{!record.Name}
+                                <br /><span class="mutedDescription">{!record.Description__c}</span></div>
+                        </th>
+                        <th scope="row">
+                            <div class="slds-truncate mutedData" title="{!record.Level__c}">{!record.Level__c}</div>
+                        </th>
+                        <td>
+                            <div class="slds-truncate mutedData" title="{!record.Constant__c}">{!record.Constant__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate mutedData" title="{!record.Price__c}">{!record.Price__c}</div>
+                        </td>
+                        <td>
+                            <c:addButton
+                                         aura:id="allButtons"
+                                         variant="{#v.variant}"
+                                         iconName="utility:add"
+                                         resourceId="{#v.record.Id}"
+                                         />
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        
+        <aura:if isTrue="{! (v.records == null || !v.records.length) }">
+            <div class="emptyContentInner" >
+                <b> No Items to display.</b>
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{! and(v.loadMore) }">
+            <div class="loadMore" onclick="{! c.loadMoreClicked }" >
+                View More
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{! v.isloadingData}">
+            <div class="slds-is-relative" style="min-height: 10vh;">
+                <lightning:spinner class="slds-spinner_brand" alternativeText="Loading..." size="medium" />
+            </div>            
+        </aura:if>
+        
+        <div>
+            <div class="slds-align_absolute-center" style="margin-top:18px;">
+                <lightning:button  label="Back" class="slds-button slds-button_neutral buttonPadding" />
+                <lightning:button label="Next" class="slds-button slds-button_brand buttonPadding" />
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

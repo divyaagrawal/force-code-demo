@@ -1,0 +1,46 @@
+<apex:page controller="CustomAccountDetailsController">
+ <apex:form >
+   <apex:pageblock >
+    <apex:pageBlockButtons >
+   <apex:commandButton value="search" action="{! search}" />
+   
+   </apex:pageBlockButtons>
+   <apex:pageblockSection >
+         <apex:inputText value="{! BillingCity}" label="BillingCity"/>
+        <apex:inputText value="{! BillingState}" label="BillingState"/>
+        <apex:inputText value="{! BillingCountry}" label="BillingCountry"/>
+        
+        </apex:pageblockSection>
+        
+        <apex:pageblockSection columns="1">
+        <apex:pageblockTable value="{! filterAccount}" var="acc">
+        <apex:column value="{! acc.Name}" />
+        <apex:column value="{! acc.AccountNumber}" />
+         <apex:column value="{! acc.BillingCity}" />
+          <apex:column value="{! acc.BillingState}" />
+           <apex:column value="{! acc.BillingCountry}" />
+        </apex:pageblockTable>
+        
+        </apex:pageblockSection>
+        <apex:pageBlockButtons >
+                <div style="text-align:right"> 
+                  Total Records Found: {!Con.resultSize}  
+      <apex:image url="/img/search_prevarrow_disabled.gif" styleClass="prevArrow" rendered="{!NOT(Con.HasPrevious)}"/>  
+      <apex:image url="/img/search_prevarrow.gif" title="Previous Page" styleClass="prevArrow" rendered="{!Con.HasPrevious}"/>  
+      <apex:commandLink action="{!Previous}" title="Previous Page" value="Previous Page" rendered="{!Con.HasPrevious}"/>  
+      <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasPrevious)}">Previous Page</apex:outputPanel>           
+      <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasNext)}">Next Page</apex:outputPanel>           
+      <apex:commandLink title="Next Page" value="Next Page" rendered="{!Con.HasNext}" action="{!Next}"/>&nbsp;  
+      <apex:image url="/img/search_nextarrow.gif" title="Next Page" styleClass="nextArrow" rendered="{!Con.HasNext}"/>  
+      <apex:image url="/img/search_nextarrow_disabled.gif" rendered="{!NOT(Con.HasNext)}"/> 
+      <img src="/s.gif" title="Last Page" alt="Last Page" class="last"/>         
+                </div>
+            </apex:pageBlockButtons>         
+   </apex:pageblock>
+   
+  
+
+ </apex:form>
+  
+  
+</apex:page>

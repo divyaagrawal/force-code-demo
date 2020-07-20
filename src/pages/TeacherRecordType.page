@@ -1,0 +1,6 @@
+<apex:page standardController="Contact">
+<apex:outputPanel style="border:1px solid red; width:100%; backgroud-color:red;" rendered="{!contact.Recordtype.name == 'TGT'}">
+{!contact.Recordtype.name}
+</apex:outputPanel>
+
+</apex:page>

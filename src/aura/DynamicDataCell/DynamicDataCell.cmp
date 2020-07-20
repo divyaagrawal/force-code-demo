@@ -1,0 +1,19 @@
+<aura:component >
+	 <aura:attribute name="row" type="Object" access="Public" description="Current Row Info"/>
+	 <aura:attribute name="column" type="Object" access="Public" description="Current Column Info"/>
+     <aura:attribute name="cellValue" type="String" access="Public" description="Actual Data to be shown in Table Cell"/>
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+     <aura:registerEvent name="dataCellClickEvent" type="c:DynamicDataCellClickEvent" description="Registering event for onClick functionality"/>
+    <aura:if isTrue="{! and(v.column.type == 'checkbox', v.cellValue)}">
+        <!--lightning:input type="checkbox" label="{!v.column.name}" name="{!v.column.name}" checked="true" readonly="true" variant="label-hidden"/-->
+        <ui:outputCheckbox value="true"/>
+    </aura:if>
+     <aura:if isTrue="{!v.column.type == 'link'}">
+         <a onclick="{!c.onLinkClick}">
+            <ui:outputText value="{!v.cellValue}"/>
+         </a>
+    </aura:if>
+    <aura:if isTrue="{! and(not(v.column.type == 'checkbox'), not(v.column.type == 'link'))}">
+    	<ui:outputText value="{!v.cellValue}"/>
+    </aura:if>
+</aura:component>

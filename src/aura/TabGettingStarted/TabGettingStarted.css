@@ -1,0 +1,7 @@
+.THIS .slds-icon-fill svg{
+    fill: rgb(255, 255, 255);
+}
+.THIS .slds-form-element__control {
+   display: inline-flex;
+
+}

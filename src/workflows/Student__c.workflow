@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Student_Object_Update</fullName>
+        <ccEmails>techdivadivya@gmail.com</ccEmails>
+        <description>Student Object Update</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>techdivadivya@gmail.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Student_record_change</template>
+    </alerts>
+    <alerts>
+        <fullName>email_alert</fullName>
+        <ccEmails>techdivadivya@gmail.com</ccEmails>
+        <description>email_alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>techdivadivya@gmail.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/MarketingProductInquiryResponse</template>
+    </alerts>
+    <alerts>
+        <fullName>email_will_send_to_student_that_their_record_editted</fullName>
+        <description>email will send to student that their record editted</description>
+        <protected>false</protected>
+        <recipients>
+            <field>email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/m_ass2_student_email_template</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>married_status_update</fullName>
+        <field>Married__c</field>
+        <literalValue>1</literalValue>
+        <name>married status update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>married_true</fullName>
+        <actions>
+            <name>married_status_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Student__c.WifeName__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>send_email_to_student</fullName>
+        <actions>
+            <name>email_will_send_to_student_that_their_record_editted</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(NOT( ISNEW() ),  NOT( ISBLANK(email__c)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

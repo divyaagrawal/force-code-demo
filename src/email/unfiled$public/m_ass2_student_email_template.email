@@ -1,0 +1,6 @@
+Hi {!Student__c.First_Name__c},
+
+class {!Class__c.Name} record is updated. 
+
+Regards,
+Divya

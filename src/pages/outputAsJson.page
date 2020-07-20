@@ -1,0 +1,7 @@
+<apex:page Controller="AccountJSON">
+ {!accList}
+ <br/>
+ <br/>
+ <br/>
+ {!accJSON}
+</apex:page>

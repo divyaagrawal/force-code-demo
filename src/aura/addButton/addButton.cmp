@@ -1,0 +1,14 @@
+<aura:component>
+
+    <aura:attribute name="variant" type="String"/>
+    <aura:attribute name="iconName" type="String"/>
+    <aura:attribute name="resourceId" type="Id"/>
+
+    <lightning:button
+            variant="{!v.variant}"
+            iconName="{!v.iconName}"
+            value="{!v.resourceId}"
+            onclick="{!c.changeColor}"
+            />
+
+</aura:component>

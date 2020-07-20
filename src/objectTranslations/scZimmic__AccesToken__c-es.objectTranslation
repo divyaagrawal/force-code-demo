@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- User --></label>
+        <name>scZimmic__User__c</name>
+        <relationshipLabel><!-- AccessTokens --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- saved --></label>
+        <name>scZimmic__saved__c</name>
+    </fields>
+    <fields>
+        <label><!-- screen_name --></label>
+        <name>scZimmic__screen_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- secret --></label>
+        <name>scZimmic__secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- service_name --></label>
+        <name>scZimmic__service_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- token --></label>
+        <name>scZimmic__token__c</name>
+    </fields>
+</CustomObjectTranslation>

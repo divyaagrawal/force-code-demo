@@ -1,0 +1,65 @@
+<aura:component controller="InfiniteScroll" implements="force:appHostable">
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="selectedRowsDetails" type="Object" />
+    <aura:attribute name="selectedRowsList" type="List" />
+    
+    <aura:attribute name="maxRowSelection" type="Integer" default="5"/>
+    <aura:attribute name="selectedRows" type="List" />
+    
+    <!--- enableInfiniteLoading  -->
+    <aura:attribute name="enableInfiniteLoading" type="Boolean" default="true"/>
+    <aura:attribute name="initialRows" type="Integer" default="30"/>
+    <aura:attribute name="rowsToLoad" type="Integer" default="10"/>
+    <aura:attribute name="totalNumberOfRows" type="Integer" default="10"/>
+    <aura:attribute name="loadMoreStatus" type="String" default="Loading .... "/>
+    <aura:attribute name="showRowNumberColumn" type="Boolean" default="false"/>
+    <aura:attribute name="rowNumberOffset" type="Integer" default="0"/>
+    <aura:attribute name="rowsToAdd" type="Integer" default="10"/>
+    <aura:attribute name="currentCount" type="Integer" default="10"/>
+    
+    <aura:attribute name="activeFilter" type="string" default="All" description="The currently selected actions filter"/>
+    
+    <aura:attribute name="sortedBy" type="String"/>
+    <aura:attribute name="sortedDirection" type="String"/>
+    <aura:attribute name="defaultSortDirection" type="String"/>
+    
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+    <div class="my-custom-background">
+        <lightning:button label="Complete"  variant="brand" onclick="{!c.handleSelect}"/>
+        <lightning:button label="In Completed"  variant="brand" onclick="{!c.handleSelect}"/>
+        <lightning:button label="Pre Order"  variant="brand" onclick="{!c.handleSelect}"/>
+        
+    </div>
+    <!-- the container element determine the height of the datatable -->
+    <div style="height: 600px">
+        <h1> Total Rowns : {! v.totalNumberOfRows}</h1>
+        <h1>Selected Rows: {! v.selectedRowsCount }</h1>
+        <h1>Selected Objects: {! v.selectedRowsDetails }</h1>
+        <h1>Current Offset : {! v.currentCount }</h1>
+        
+        
+        <lightning:datatable columns="{! v.columns }"
+                             data="{! v.data }"
+                             keyField="id"
+                             showRowNumberColumn="true"
+                             rowNumberOffset="0"
+                             onrowaction="{! c.handleRowAction }"
+                             selectedRows="{! v.selectedRows }"
+                             maxRowSelection="{! v.maxRowSelection }"
+                             onrowselection="{! c.updateSelectedText }"
+                             enableInfiniteLoading="true"
+                             loadMoreOffset="{! v.loadMoreOffset }"
+                             onheaderaction="{! c.handleHeaderAction }"
+                             sortedBy="{! v.sortedBy }"
+                             sortedDirection="{! v.sortedDirection }"
+                             defaultSortDirection="{! v.defaultSortDirection }"
+                             onsort="{! c.updateColumnSorting }"
+                             onloadmore="{! c.loadMoreData }"/>
+    </div>
+    {! v.loadMoreStatus }
+    
+</aura:component>

@@ -1,0 +1,59 @@
+<!--
+* @Component Name	  : TabGettingStarted 
+* @Story 			  : ( Tab: Getting Started Page )
+* @Release 			  : Release
+* @Author             : 
+* @Version            : 1.0
+* @Date 		      : 08/09/2018
+* @updated Version	  : 1.1
+* @Last updated Date  : 09/18/2019
+* @Last updated By    : 
+* @Story 			  : ( Tab: Additional Transactions Checkboxes )
+-->
+<aura:component controller="TabController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome" access="global">
+    <aura:attribute name="TabData" type="TabDataWrapper"/>
+        <aura:attribute name="varSpinnerCls" type="String" default="slds-hide"/>
+    <aura:attribute name="varErrMsg" type="String"/>
+    
+    <aura:attribute name="varAdditionalDetails" type="Boolean" default="false"/>
+   
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+   
+    <aura:registerEvent name="EventContinue" type="c:TabFooterContinueEvent"/>
+    <aura:method name="saveTabData" action="{!c.handleSaveMethod}"/>
+    
+    <div class="c-container slds-p-bottom_medium slds-border_bottom slds-p-top_x-small">
+        <lightning:spinner aura:id="mySpinner" variant="brand" class="{!v.varSpinnerCls}" size="large" alternativeText="Processing ..."/>
+        <aura:if isTrue="{!not(empty(v.varErrMsg))}">
+        	<c:TabMessageComponent varErrMsg="{!v.varErrMsg}" varType="error"/>
+        </aura:if>
+    
+        
+        <!-- Row 1 -->
+        <lightning:layout horizontalAlign="space">
+            <lightning:layoutItem flexibility="auto" size="12" class="slds-m-bottom_medium">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-p-horizontal_small slds-size_1-of-3">
+                        <label><span class="slds-text-heading_x-small">Client Name</span></label>
+                        <div class="slds-input">
+                            <b>{!v.TabData.opportunityObj.Name}</b>
+                        </div>
+                        
+                        <lightning:input label="**Name**" name="oppName" variant="label-hidden"  
+                                                 aura:id="oppName" value="{!v.TabData.opportunityObj.Name}" 
+                                                 required="true" messageWhenValueMissing="Please enter name"/>
+                        
+                        <lightning:input label="**Amount**" name="oppAmount" variant="label-hidden"  
+                                                 aura:id="oppAmount" value="{!v.TabData.opportunityObj.Amount}" 
+                                                 required="true" messageWhenValueMissing="Please enter amount"/>
+                        
+                            
+                        
+                    </div> 
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+       
+       
+    </div>
+</aura:component>

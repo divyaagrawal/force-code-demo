@@ -1,0 +1,15 @@
+<apex:page showHeader="false" sidebar="false">
+    <apex:includeLightning />
+    <div style="width:100%;height:100%;" id="auditDataContainer" />
+    <script>
+    $Lightning.use("c:AuditDataApp", function() {
+        $Lightning.createComponent("c:auditData",
+                                   { 
+                                   },
+                                   "auditDataContainer",
+                                   function(cmp) {
+                                       console.log('Component created, do something cool here');
+                                   });
+    });
+    </script>
+</apex:page>

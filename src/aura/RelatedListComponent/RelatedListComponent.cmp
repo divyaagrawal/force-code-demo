@@ -1,0 +1,25 @@
+<!--
+ 	Author	    : Divya Agrawal
+ 	Description	: This component is used to show Related Records
+    Component Name    : RelatedRecords
+-->
+<aura:component controller="RelatedList">
+	<aura:attribute name="spinnerCls" type="string" default="slds-hide"/> 
+    <aura:attribute name="recordId" type="String" description="sObject id"/>
+    <aura:attribute name="sObjectName" type="String"/>
+    <aura:attribute name="iconName" type="String"/>
+  
+    <aura:attribute name="recordsList" type="Object[]"/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="dataCellClickEvent" event="c:DynamicDataCellClickEvent" action="{!c.handleDataCellClickEvent}"/>
+    <aura:handler name="rowActionEvent" event="c:DynamicTableRowActionEvent" action="{!c.handleRowActionEvent}"/>
+    
+    <lightning:card title="{!v.sObjectName + ' (' + v.recordsList.length + ')' }" iconName="{!v.iconName}" class="border_bottom_none" footer="Card Footer">
+        <aura:set attribute="actions"></aura:set>
+        <lightning:spinner aura:id="containerSpinner" class="{!v.spinnerCls}" alternativeText="hidden"/>
+        <div aura:id="recordsGrid">
+            
+        </div>
+        <aura:set attribute="footer"></aura:set>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,50 @@
+<!--
+Support API : 45.00
+Author : Divya Agrawal
+Description : Delete Debug Logs
+-->
+<aura:component controller="DeleteDebugLogsController" implements="flexipage:availableForAllPageTypes"
+                access="global">
+    
+    <aura:attribute name="noOfLogs" type="String" />
+    <aura:attribute name="successMsg" type="String" default="" />
+    <aura:attribute name="errorMsg" type="String" default="" />
+    
+    <!-- init handler which will call 'doInit' fucntion on component load-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:attribute name="varSpinnerCls" type="String" default="slds-hide"/>
+    
+    
+<!--    <div class="slds-grid slds-wrap" style="padding:100px;">
+        <div class="slds-col slds-size_4-of-12"> -->
+            <lightning:card title="Debug Logs" iconName="utility:ad_set" class="slds-p-around_small" >
+                
+                <!-- Loading spinner -->
+                <lightning:spinner aura:id="mySpinner" variant="brand" class="{!v.varSpinnerCls}" size="large" alternativeText="Processing ..."/>
+                <aura:set attribute="actions">
+                    <lightning:button  onclick="{!c.deleteLogsClick }" label="Delete" iconName="utility:delete" iconPosition="left"  variant="brand"  />
+                </aura:set>
+                
+                <p class="slds-p-horizontal_small slds-text-title_bold">
+                    Available Logs {!v.noOfLogs}
+                </p>
+                
+                
+                <aura:if isTrue="{! v.successMsg != ''}">
+                    <p class="slds-p-horizontal_small slds-text-color_success">
+                       {!v.successMsg}
+                    </p>
+                </aura:if> 
+                
+                <aura:if isTrue="{! v.errorMsg != ''}">
+                    <p class="slds-p-horizontal_small slds-text-color_error">
+                        {!v.errorMsg}
+                    </p>
+                </aura:if> 
+                
+            </lightning:card><!--
+        </div>
+        <div class="slds-col slds-size_8-of-12">
+        </div>
+    </div>-->
+</aura:component>

@@ -1,0 +1,24 @@
+.THIS .slds-scrollable_x
+{overflow-y:visible!important;overflow-x:visible!important;}
+.THIS .slds-scrollable_y
+{overflow-y:visible!important;overflow-x:visible!important;}
+
+.THIS .customRadioCls .slds-form-element__control .slds-radio{
+    display : inline-block !important;
+}
+
+.THIS .forceListViewManagerGrid {
+    height: 100%;
+    display: block;
+}
+
+.THIS .forceListViewManagerGrid .emptyContentInner {
+   padding:70px;
+    text-align: center;
+}
+
+.THIS .loadMore {
+   padding:5px;
+    text-align: center;
+    border: green solid 3px;
+}

@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+    	<aura:attribute name="row" type="Object" access="Public"/>
+    	<aura:attribute name="column" type="String" access="Public"/>
+</aura:event>

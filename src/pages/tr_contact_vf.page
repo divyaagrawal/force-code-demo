@@ -1,0 +1,5 @@
+<apex:page standardController="Contact">
+  <script>
+  alert('hello');
+  </script>
+</apex:page>

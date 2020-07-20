@@ -1,0 +1,1 @@
+<aura:event type="APPLICATION" description="Opportunity Send For Approval Close Event" />

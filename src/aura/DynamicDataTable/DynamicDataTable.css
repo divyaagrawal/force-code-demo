@@ -1,0 +1,51 @@
+.THIS .slds-table td {
+    height:50px;
+}
+.THIS .slds-table tr {
+    height:50px;
+}
+.THIS .tableDivison{
+   display:block;
+   overflow-x: scroll;
+}
+
+.THIS .totalClass{
+    font-weight: bold;
+}
+
+.THIS .headerLink{
+    padding-left:0rem;
+}
+
+.THIS {
+     white-space: nowrap;
+}
+.THIS .slds-table tfoot td{
+  border-top: 1px solid rgb(216, 221, 230);
+}
+
+.THIS .slds-button--icon-bare span:before{
+    content:"Actions ";
+    font-size: 100%;
+}
+
+.THIS .slds-button--icon-bare {
+     padding-left: 0.5rem;
+    padding-right: 0.5rem;
+     padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+     border-color: rgb(216, 221, 230);
+}
+
+/*
+.THIS .bmenu {
+    
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid rgb(217, 219, 221);
+    transition: border .15s linear;
+    border-color: rgb(216, 221, 230);
+    background-color: rgb(255, 255, 255);
+}*/

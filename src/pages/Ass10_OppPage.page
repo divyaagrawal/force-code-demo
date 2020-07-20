@@ -1,0 +1,10 @@
+<apex:page controller="AssOppPageController">
+<apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockTable var="opp" value="{!oppList}">
+      <apex:column value="{!opp.AccountId}"/> 
+    <apex:column value="{!opp.amount}"/>
+</apex:pageBlockTable>   
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

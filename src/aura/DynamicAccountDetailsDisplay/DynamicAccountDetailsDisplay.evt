@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="sponsororCustodian" type="String"/>
+    <aura:attribute name="productType" type="String"/>
+</aura:event>

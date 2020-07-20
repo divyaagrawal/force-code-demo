@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForRecordHome" access="global">
+    <lightning:unsavedChanges aura:id="unsaved"
+                              onsave="{!c.handleSave}"
+                              ondiscard="{!c.handleDiscard}" />
+    <lightning:button label="Make Unsaved Changes" onclick="{!c.makeUnsavedChanges}" />
+    <lightning:button label="Clear Unsaved Changes" onclick="{!c.clearUnsavedChanges}" />
+</aura:component>

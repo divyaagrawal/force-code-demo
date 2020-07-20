@@ -1,0 +1,137 @@
+<!--
+* @Component Name	  : AuditData
+* @Story 			  : -
+* @Release 			  : -
+* @Author             : Divya Agrawal
+* @Version            : 1.0
+* @Date 		      : 02/15/2019
+* @Updated By 		  : Divya Agrawal
+-->
+<aura:component controller="AuditDataController" access="GLOBAL">
+    
+    <!-- Attributes to manage records -->
+    <aura:attribute name="records" type="Object" />
+    <aura:attribute name="filteredRecords" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="rowNumberOffset" type="Integer" default="0"/>
+    <aura:attribute name="rowsToLoad" type="Integer" default="50"/>
+    <aura:attribute name="rows" type="Integer" default="0"/>
+    
+    <!-- Attributes for supporting filters -->
+    <aura:attribute name="appOption" type="String" />
+    <aura:attribute name="userList" type="List"/>
+    <aura:attribute Name="maxDate" type="String"  />
+    <aura:attribute name="appOptions" type="List" default="[
+                                                           {'label': 'Lightning', 'value': 'Lightning'},
+                                                           {'label': 'General', 'value': 'General'}
+                                                           ]"/>
+    <!-- Attributes for filters -->
+    <aura:attribute Name="selectedUser" type="String"  access="public" />
+    <aura:attribute Name="selectedDate" type="String"  />
+    
+    <!-- Called on loading of page -->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    
+    <!-- Attributes for Infinite loading custom functionality -->
+    <aura:attribute name="loadMoreMsg" type="String" default=""/>
+    <aura:attribute name="loadMore" type="Boolean" default="false"/>    
+    <aura:attribute name="isloadingData" type="Boolean" default="false"/>  
+    <aura:attribute name="isSearchRecords" type="Boolean" default="false"/> 
+    
+    <!-- Loading spinner -->
+    <aura:attribute name="varSpinnerCls" type="String" default="slds-hide"/>
+    <lightning:spinner aura:id="mySpinner" variant="brand" class="{!v.varSpinnerCls}" size="large" alternativeText="Processing ..."/>
+    
+    
+    <div class="slds-p-horizontal_large">
+        
+        <!-- Section to show filters -->
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">                
+                <lightning:select aura:id="selectedUser" name="selectedUser" label="Select User" 
+                                  value="{!v.selectedUser}" >
+                    <option value="">-- Please Select --</option>
+                    <aura:iteration items="{!v.userList}" var="item">
+                        <option text="{!item.label}" value="{!item.value}"/>
+                    </aura:iteration>
+                </lightning:select>
+            </div>
+            <div class="slds-col">
+                <lightning:input type="date" name="date" label="From Date" value="{!v.selectedDate}" min="2000-01-01" max="{!v.maxDate}" />
+            </div>
+        </div>
+        
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <lightning:radioGroup
+                                      aura:id="radioGrp"
+                                      name="radioButtonGroup"
+                                      label="Choose Your Option"
+                                      options="{! v.appOptions }"
+                                      value="{! v.appOption }"
+                                      onchange="{! c.handleChange }"
+                                      class="customRadioCls"
+                                      />
+            </div>
+            <div class="slds-col" style="padding-top: .75rem; !important">
+                <lightning:button  onclick="{!c.searchClick }" label="Search" iconName="utility:search" iconPosition="left"  variant="brand"  />
+            </div>
+        </div>
+        <br /><br />
+        
+        <!-- Section to show records -->
+        <lightning:card title="Change History" iconName="action:change_record_type" class="slds-p-around_medium" >
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_3-of-6 slds-text-heading_medium slds-has-flexi-truncate">
+                    {!v.mydata.length} Items - Sorted by latest date
+                </div>
+                <div onkeyup="{! c.filter }" class="slds-col slds-size_2-of-6 slds-has-flexi-truncate">
+                    <lightning:input
+                                     variant="label-hidden" 
+                                     aura:id="enter-search"
+                                     name="enter-search"
+                                     type="search"
+                                     placeholder ="Search and hit enter key"
+                                     />
+                </div>
+                
+                <lightning:button  class="slds-col slds-size_1-of-6 slds-has-flexi-truncate" onclick="{!c.downloadCsv }" label="Download As CSV" iconName="utility:download" iconPosition="left"  variant="brand"  />
+            </div>
+            <br/>
+            
+            <div class ="forceListViewManagerGrid" >
+                <lightning:datatable data="{! v.filteredRecords }"
+                                     columns="{! v.mycolumns }"
+                                     keyField="Id"
+                                     hideCheckboxColumn="true"
+                                     showRowNumberColumn="true"
+                                     onloadmore="{! c.loadMoreData }"
+                                     enableInfiniteLoading="{! v.enableInfiniteLoading }" 
+                                     />
+                
+                
+                <aura:if isTrue="{! (v.filteredRecords == null || !v.filteredRecords.length) }">
+                    <div class="emptyContentInner" >
+                        No Items to display.
+                    </div>
+                </aura:if>
+            </div>
+            
+            <!-- Infinite loading functionality -->
+            <aura:if isTrue="{! and(v.loadMore,!v.isSearchRecords) }">
+                <div class="loadMore" onclick="{! c.loadMoreClicked }" >
+                    <lightning:icon iconName="utility:chevrondown" size="x-small" title="" />
+                    &nbsp; &nbsp; {!v.loadMoreMsg} <br />
+                </div>
+            </aura:if>
+            
+            <aura:if isTrue="{! v.isloadingData}">
+                <div class="slds-is-relative" style="min-height: 10vh;">
+                    <lightning:spinner class="slds-spinner_brand" alternativeText="Loading..." size="medium" />
+                </div>            
+            </aura:if>
+            
+        </lightning:card>
+    </div>
+</aura:component>

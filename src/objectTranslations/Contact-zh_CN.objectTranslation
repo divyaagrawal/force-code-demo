@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- City --></label>
+        <name>City__c</name>
+        <picklistValues>
+            <masterLabel>Adelaide</masterLabel>
+            <translation><!-- Adelaide --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agra</masterLabel>
+            <translation><!-- Agra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Austin</masterLabel>
+            <translation><!-- Austin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beijing</masterLabel>
+            <translation><!-- Beijing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brisbane</masterLabel>
+            <translation><!-- Brisbane --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chicago	 Illinois</masterLabel>
+            <translation><!-- Chicago	 Illinois --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delhi</masterLabel>
+            <translation><!-- Delhi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Handa</masterLabel>
+            <translation><!-- Handa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hekinan</masterLabel>
+            <translation><!-- Hekinan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Houston</masterLabel>
+            <translation><!-- Houston --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ichinomiya</masterLabel>
+            <translation><!-- Ichinomiya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jaipur</masterLabel>
+            <translation><!-- Jaipur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kanpur</masterLabel>
+            <translation><!-- Kanpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kariya</masterLabel>
+            <translation><!-- Kariya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kasugai</masterLabel>
+            <translation><!-- Kasugai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kolkata</masterLabel>
+            <translation><!-- Kolkata --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lck</masterLabel>
+            <translation><!-- Lck --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Los Angeles California</masterLabel>
+            <translation><!-- Los Angeles California --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mathura</masterLabel>
+            <translation><!-- Mathura --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Melbourne</masterLabel>
+            <translation><!-- Melbourne --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nagoya</masterLabel>
+            <translation><!-- Nagoya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New York</masterLabel>
+            <translation><!-- New York --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Okazaki</masterLabel>
+            <translation><!-- Okazaki --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patna</masterLabel>
+            <translation><!-- Patna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Philadelphia</masterLabel>
+            <translation><!-- Philadelphia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phoenix	 Arizona</masterLabel>
+            <translation><!-- Phoenix	 Arizona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Diego</masterLabel>
+            <translation><!-- San Diego --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Jose</masterLabel>
+            <translation><!-- San Jose --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seto</masterLabel>
+            <translation><!-- Seto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shanghai</masterLabel>
+            <translation><!-- Shanghai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sunshine Coast	Qld</masterLabel>
+            <translation><!-- Sunshine Coast	Qld --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sydney</masterLabel>
+            <translation><!-- Sydney --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toyohashi</masterLabel>
+            <translation><!-- Toyohashi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toyokawa</masterLabel>
+            <translation><!-- Toyokawa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tsushima</masterLabel>
+            <translation><!-- Tsushima --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wollongong</masterLabel>
+            <translation><!-- Wollongong --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+        <picklistValues>
+            <masterLabel>Australia</masterLabel>
+            <translation><!-- Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China</masterLabel>
+            <translation><!-- China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>USA</masterLabel>
+            <translation><!-- USA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Experience --></label>
+        <name>Experience__c</name>
+    </fields>
+    <fields>
+        <label><!-- Languages --></label>
+        <name>Languages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tertiary</masterLabel>
+            <translation><!-- Tertiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prequalified Amount --></label>
+        <name>Prequalified_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Secret Key --></label>
+        <name>Secret_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subjects --></label>
+        <name>Subjects__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hindi</masterLabel>
+            <translation><!-- Hindi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maths</masterLabel>
+            <translation><!-- Maths --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Science</masterLabel>
+            <translation><!-- Science --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- PGT --></label>
+        <name>PGT</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- TGT --></label>
+        <name>TGT</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- should be same --></errorMessage>
+        <name>Contact_must_be_in_Account_ZIP_Code</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Attach_Files --></label>
+        <name>dropzone__Attach_Files</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Email --></label>
+        <name>dropzone__Send_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_with_DocuSign --></label>
+        <name>dsfs__Send_with_DocuSign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- tr_contact_js --></label>
+        <name>tr_contact_js</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- tr_contact_vf --></label>
+        <name>tr_contact_vf</name>
+    </webLinks>
+</CustomObjectTranslation>

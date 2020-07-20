@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Student</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Student</value>
+    </caseValues>
+    <fields>
+        <label><!-- Age --></label>
+        <name>Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- DOB --></label>
+        <name>DOB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Extra --></label>
+        <name>Extra__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- HaveWhicle --></label>
+        <name>HaveWhicle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Married --></label>
+        <name>Married__c</name>
+    </fields>
+    <fields>
+        <label><!-- WifeName --></label>
+        <name>WifeName__c</name>
+    </fields>
+    <fields>
+        <label><!-- class --></label>
+        <name>class__c</name>
+        <relationshipLabel><!-- Student --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- email --></label>
+        <name>email__c</name>
+    </fields>
+    <fields>
+        <label><!-- fees --></label>
+        <name>fees__c</name>
+    </fields>
+    <fields>
+        <label><!-- phone --></label>
+        <name>phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- sex --></label>
+        <name>sex__c</name>
+        <picklistValues>
+            <masterLabel>Female</masterLabel>
+            <translation><!-- Female --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Male</masterLabel>
+            <translation><!-- Male --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Student Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- DOB can&apos;t be greater than today --></errorMessage>
+        <name>dob_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- account Billing Zip/Postal Code is in 99999 or 99999-9999 format if Billing Country is USA or US --></errorMessage>
+        <name>phone_format</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Generate_PDF --></label>
+        <name>Generate_PDF</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,54 @@
+<aura:component controller="CustomViewController">
+    
+    <!-- Attributes to manage records -->
+    <aura:attribute name="records" type="Object" />
+    <aura:attribute name="columns" type="List" default = "['Name','Type']" />
+    
+    <aura:attribute name="appOptions" type="List" default="[1,2,3,4,5]"/>
+    <aura:attribute name="appOption" type="String" />
+    
+    <!-- Called on loading of page -->    
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <div class="slds-p-horizontal_large">
+        
+        <!-- Section to show filters -->
+         <div class="slds-grid slds-gutters">
+            <div class="slds-col">              
+                <lightning:select aura:id="selectCount" name="selectCount" label="Select Count" 
+                                  value="{!v.appOption}" >
+                    <option value="">-- Please Select --</option>
+                    <aura:iteration items="{!v.appOptions}" var="item">
+                        <option text="{!item}" value="{!item}"/>
+                    </aura:iteration>
+                </lightning:select>
+                
+            </div>
+            <div class="slds-col" style="padding-top: .75rem; !important">
+                <lightning:button  onclick="{!c.searchClick }" label="Search" iconName="utility:search" iconPosition="left"  variant="brand"  />
+            </div>
+        </div>
+        <br />
+        <br />
+        
+        <!-- Section to show records -->
+        <lightning:card title="Account Records"  class="slds-p-around_medium" >
+            
+            <div class ="forceListViewManagerGrid" >
+                <lightning:datatable data="{! v.records }"
+                                     columns="{!v.columns}"
+                                     keyField="Id"
+                                     showRowNumberColumn="true"
+                                     onrowselection="{! c.handleRowAction }"
+                                     />
+                
+                <aura:if isTrue="{! (v.records == null || !v.records.length) }">
+                    <div class="emptyContentInner" >
+                        No Items to display.
+                    </div>
+                </aura:if>
+            </div>
+            
+        </lightning:card>
+    </div>
+</aura:component>

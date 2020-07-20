@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- feedItemId --></label>
+        <name>scZimmic__feedItemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- hashtag --></label>
+        <name>scZimmic__hashtag__c</name>
+    </fields>
+    <fields>
+        <label><!-- servicePostId --></label>
+        <name>scZimmic__servicePostId__c</name>
+    </fields>
+    <fields>
+        <label><!-- service_name --></label>
+        <name>scZimmic__service_name__c</name>
+    </fields>
+</CustomObjectTranslation>

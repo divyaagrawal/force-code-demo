@@ -1,0 +1,26 @@
+<aura:component controller="DemoAccountOpportunityController">
+    
+    <aura:attribute name ="accountList" type="List" />
+    <aura:attribute name="mycolumns" type="List"/>
+    
+        <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+     <div class ="forceListViewManagerGrid" >
+                <lightning:datatable data="{! v.accountList }"
+                                     columns="{! v.mycolumns }"
+                                     keyField="Id"
+                                     hideCheckboxColumn="true"
+                                     showRowNumberColumn="true"
+                                     />
+                
+                
+                <aura:if isTrue="{! (v.accountList == null || !v.accountList.length) }">
+                    <div class="emptyContentInner" >
+                        No Items to display.
+                    </div>
+                </aura:if>
+            </div>
+        
+        
+	
+</aura:component>

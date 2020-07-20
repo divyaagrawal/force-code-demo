@@ -1,0 +1,56 @@
+<aura:component >
+    <!-- Aura Attribute for store single Contact[standard Object] Instance
+         And Store Index of Particular Instance --> 
+    
+    <aura:attribute name="sObjectInstance" type="sObject"/>
+    <aura:attribute name="rowIndex" type="Integer" default="0"/>
+    <aura:attribute name="listOfAllFields" type="List"/>
+    <aura:attribute name="ListOfCell" type="String[]"/>
+    
+    
+    <!-- Register 2 Lightning Event for handle add or Delete rows on Parent Component  --> 
+    <aura:registerEvent name="DeleteRowEvt" type="c:DeleteRowEvt"/> 
+    <aura:registerEvent name="AddRowEvt" type="c:AddNewRowEvt"/> 
+    
+    <tr class="slds-text-title_caps">
+        
+        <aura:iteration items="{!v.listOfAllFields}" var="cell" indexVar="index">
+            
+            
+            <td>
+                <div class="slds-grid slds-gutters">
+                    <aura:if isTrue="{!not(empty(cell.pickListValues))}">
+                        
+                        <lightning:select label="">
+                            <aura:iteration items="{!cell.pickListValues}" var="val">
+                                <option value="{!val}"> {!val}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                        
+                        <aura:set attribute="else">
+                            
+                            <lightning:input name="{!index}" class="slds-input" type ="{!cell.dataType}" value="{!cell.apiName}" />
+                            
+                            
+                            
+                        </aura:set> 
+                    </aura:if>
+                </div>
+            </td>
+        </aura:iteration>
+        
+        <td>
+            <aura:if isTrue="{!v.rowIndex == 0}">
+                <a onclick="{!c.AddNewRow}">Add Icon
+                </a>    
+                
+                <aura:set attribute="else">
+                    <a onclick="{!c.removeRow}">Delete Icon
+                        
+                    </a>
+                    
+                </aura:set> 
+            </aura:if>
+        </td> 
+    </tr>
+</aura:component>

@@ -1,0 +1,80 @@
+<apex:page showHeader="false" sidebar="false">
+   <style type="text/css">
+       .marketData td
+       {
+           padding-bottom: 2px;
+           padding-left: 2px;
+           padding-right: 2px;
+           font-family: Arial, Verdana, Sans-Serif;
+           color: black;
+           font-size: 7.5pt;
+           padding-top: 2px;
+       }
+    
+       body {
+        display: block;
+        background-color: transparent;
+        }
+
+   </style>
+   
+    <!-- javascript function to prepare and navigate url for quotes -->
+    <script type="text/javascript">
+        var sSmartWorkBaseUrl = "https://advisors.accp.voyasmartworks.com";
+        function getQuote()
+        {
+            var sURL = sSmartWorkBaseUrl+ "/Workstation/SecurityDetails.aspx?symb=";
+            var symbolTextId = document.getElementById('txtSymbol');
+            if( symbolTextId.value == "" || symbolTextId.value == null )
+                sURL += "?x=12&y=5";
+            else
+                sURL += symbolTextId.value;
+                
+            window.open(sURL,'Quotes','height=750,width=800,resizable=yes');
+            return false;
+        }
+        
+        
+
+        function imgSwap(oImg,nSid)
+        {
+            if (document.images)
+                document.images[oImg].src = 'https://chartbigchart.gtm.idmanagedsolutions.com/custom/voya-com/voya-index-chart.img?sid='+nSid+'&rnd='+Math.random();
+        }
+    </script>
+    <div id="tools_menu" style="float: left">
+       <span>Market &amp; Quotes</span>
+             
+        <table class="marketData" cellSpacing="1" cellPadding="0" width="100%" border="0">
+                <tr>
+                    <td align="center">
+                        <img src="https://chartbigchart.gtm.idmanagedsolutions.com/custom/voya-com/voya-index-chart.img?sid=14828597" border="0" name="mktImg" usemap="#mktMap" />
+                            <map name="mktMap">
+                                <area shape="rect" alt="DJIA" coords="1,100,138,115" href="javascript:imgSwap('mktImg',1643);" />
+                                <area shape="rect" alt="NASDAQ" coords="1,119,138,133" href="javascript:imgSwap('mktImg',3291);" />
+                                <area shape="rect" alt="S&P 500" coords="1,137,138,152" href="javascript:imgSwap('mktImg',3377);" />
+                                <area shape="rect" alt="VOYA" coords="1,156,138,170" href="javascript:imgSwap('mktImg',14828597);" />
+                            </map>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input onkeypress="javascript:if(window.event.keyCode == 13){return getQuote();}" 
+                            style="font-size:91%" type="text" size="8" id='txtSymbol' name='txtSymbol' title="Enter Symbol" />
+                        <input class="btn"  style="font-size:98%;font-weight:bold;align:middle;" onclick="getQuote()" type="button" value="Go!" name="Button" />
+                    </td>
+                </tr>                                           
+                <tr>
+                    <td align="center">Quotes powered by Interactive 
+                    Data</td>
+                </tr>
+                <tr>
+                    <td align="center">Research provided by<br/><IMG src="{!$Resource.morningstar_logo}" border="0" />
+                    <br/>
+                    <a href="http://quicktake.morningstar.com/StockNet/AllNews.aspx?Symbol=VOYA" style="font-size:7.5pt; font-weight:normal; font-family: Arial, Verdana, Sans-Serif; text-decoration:underline; color:black; background-image: none;background-color: transparent;" target="_blank">Show Voya News</a>
+                    </td>
+                </tr>
+            </table>
+           
+    </div>
+</apex:page>

@@ -1,0 +1,108 @@
+<aura:component >
+    <aura:attribute name="headerList" type="Object[]" access="Public" description="Data Table Header Info Object, It consists properties Name, Type and Label."/>
+	<aura:attribute name="dataList" type="Object[]" access="Public" description="Object which contains actual data to be rendered in Data Table."/>
+    <aura:attribute name="actions" type="Object[]" access="Public"/>
+    <aura:attribute type="Boolean" name="hasRowActions" default="false" description="Indicator if the Data Table has In Row Actions."/>
+    <aura:attribute type="Boolean" name="sortAsc" default="true" description="Sort Indicator for the Data Table"/>
+    <aura:attribute type="String" name="sortField" description="Sort Field for Data Table."/>
+    <aura:attribute type="Object[]" name="totalRow" description="Total Row for the Data Table."/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="rowActionEvent" type="c:DynamicTableRowActionEvent"/>
+    
+    <aura:method name="filterChange" action="{!c.onFilterChange}" description="Called when data changes on filter change"> 
+    	<aura:attribute name="filteredData" type="Object[]" default="[]" /> 
+	</aura:method>
+    <div class="slds-box slds-wrap slds-grid">
+         <div class = "{!not(v.hasRowActions) ? 'slds-size--12-of-12 slds-scrollable slds-col' : 'slds-size--10-of-12 slds-scrollable slds-col'}">
+             <table class="slds-table slds-table_bordered">
+                 <thead>
+                     <tr>
+                         <aura:iteration items="{!v.headerList}" var="header">
+                             <th class="slds-is-sortable slds-text-title--caps" onclick="{!c.doSort}" data-colname="{!header.name}" scope="col">
+                                 <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset headerLink" tabindex="0">
+                                 	<span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="{!header.label}">{!header.label}</span>
+                					<div    class="{! v.sortField == header.name ? 'slds-show' : 'slds-hide'}">
+                                   		<aura:if isTrue="{!v.sortAsc}">
+                                        	<lightning:icon iconName="utility:arrowup" size="xx-small" alternativeText="Sort Ascending"/>
+                                        	<aura:set attribute="else">
+                                                <lightning:icon iconName="utility:arrowdown" size="xx-small" alternativeText="Sort Ascending"/>
+                                            </aura:set>
+                                        </aura:if>      
+                                    </div>
+                                 </a>
+                             </th>
+                         </aura:iteration>
+                     </tr>
+                 </thead>
+                 <tbody >
+                     <aura:iteration items="{!v.dataList}" var="row">
+                         <tr>
+                             <aura:iteration items="{!v.headerList}" var="header" indexVar="columnIndex">
+                                 <td>
+                                     <c:DynamicDataCell row="{!row}" column="{!header}"/>
+                                 </td>    
+                             </aura:iteration>
+                         </tr>
+                     </aura:iteration>
+                 </tbody>
+                 <tfoot>
+                     <aura:if isTrue="{!not(empty(v.totalRow))}">
+						 <tr>
+                          	<aura:iteration items="{!v.totalRow}" var="totalRow" indexVar="totalIndex">
+                                 <td>
+                                     <div class="totalClass">
+                                         <aura:if isTrue="{!totalIndex == 0}">
+                                              Totals
+                                             <aura:set attribute="else">
+                                                 <aura:if isTrue="{!totalRow.showTotal}">
+                                                 {!totalRow.total}
+                                                </aura:if>
+                                             </aura:set>
+                                         </aura:if>
+                                     </div>
+                                  </td> 
+                         	</aura:iteration>
+                         </tr>
+                     </aura:if>
+                 </tfoot>
+             </table>
+         </div> 
+
+             <div class = "{!not(v.hasRowActions) ? 'slds-hide' : 'slds-size--2-of-12 slds-col'}" >
+                 <table class="slds-table slds-table--bordered"> 
+                     <thead>
+                         <tr class="slds-text-title--caps">
+                             <th scope="col"  class = "slds-text-title--caps">
+                                 <div class="slds-truncate " title="Actions"></div>
+                             </th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <aura:iteration items="{!v.dataList}" var="row" indexVar="rowIndex">
+                             <tr >
+                                 <td >
+                                     <div class="{!empty(row.rowActions) ? 'slds-hide' : ''}">
+                                         <lightning:buttonMenu class="slds-float_right slds-m-top--xxx-small " name="Action" alternativeText="Action" variant="bare" iconName="utility:down" onselect="{! c.handleMenuSelect }">
+                                             <aura:iteration items="{!row.rowActions}" var="action" indexVar="actionIndex">
+                                                    <lightning:menuItem label="{!action.label}" value="{!action.value+'-'+rowIndex}" />
+                                             </aura:iteration>
+                                         </lightning:buttonMenu> 
+                                     </div>
+                                 </td>
+                             </tr>
+                         </aura:iteration>
+                         
+                     </tbody>
+                     <tfoot >
+                     	<aura:if isTrue="{!not(empty(v.totalRow))}">
+                             <tr>
+                                 <td>
+                                 </td> 
+                             </tr>
+                         </aura:if>
+                     </tfoot>
+                 </table>
+            </div>
+	</div>
+</aura:component>

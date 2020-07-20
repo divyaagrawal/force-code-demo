@@ -1,0 +1,67 @@
+<!--
+* @Component Name	  : TabMasterPath
+* @Story 			  : NAO Path Header
+* @Release 			  : Release
+* @Author             : 
+* @Version            : 1.0
+* @Date 		      : 09/01/2010
+-->
+<aura:component>
+    <ltng:require styles="{!$Resource.tabPathCSS}"/>
+    <aura:attribute name="currentStage" type="String"/>
+    <aura:attribute name="tabPathHeader" type="TabDataWrapper.TabPathHeaderWrapper[]"/>
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:registerEvent name="TabMasterPathEvent" type="c:TabMasterPathEvent"/>
+    <div>
+        <div class="flexipageComponent slds-p-top_xx-small" data-aura-class="flexipageComponent">
+            <div class="runtime_sales_pathassistantPathAssistant" data-aura-class="runtime_sales_pathassistantPathAssistant">
+                <div style="border:none !important;box-shadow: none !important;" class="pa-card slds-card large branding-path runtime_sales_pathassistantPathAssistantCard runtime_sales_pathassistantPathAssistantCardDesktop" data-aura-class="runtime_sales_pathassistantPathAssistantCard runtime_sales_pathassistantPathAssistantCardDesktop">
+                    <div class="pa-drawer pa-border no-data runtime_sales_pathassistantCollapsibleDrawer" data-aura-class="runtime_sales_pathassistantCollapsibleDrawer">
+                        <div class="cd-header header">
+                            <div class="tabset-border desktop runtime_sales_pathassistantPathAssistantTabSet--desktop runtime_sales_pathassistantPathAssistantTabSet" data-aura-class="runtime_sales_pathassistantPathAssistantTabSet--desktop runtime_sales_pathassistantPathAssistantTabSet">
+                                <div class="pa-scroller uiScroller scroller-wrapper scroll-horizontal" data-aura-class="uiScroller">
+                                    <div class="scroller stretch" style="transform: translate3d(0px, 0px, 0px); transition-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1); transition-duration: 0ms;">
+                                        <div class="pa-tabBar uiTabBar">
+                                            <ul class="tabs__nav">
+                                                <aura:iteration items="{!v.tabPathHeader}" var="item" indexVar="indx"> 
+												    <aura:if isTrue ="{!item.isVisible}">
+                                                    <aura:if isTrue="{! and(item.isComplete, not(equals(item.stageName,v.currentStage)))}">
+                                                        <li onclick="{!c.onStageSelect}" title="{!item.stageName}"  class="complete tabs__item uiTabItem runtime_sales_pathassistantPathAssistantTab" role="presentation" data-aura-class="uiTabItem runtime_sales_pathassistantPathAssistantTab" data-original-width="84" data-name="{!item.stageName}" data-walkthrough-target-hint="self">
+                                                            <a class="tabHeader" aria-selected="false" data-tab-name="{!item.stageName}" tabindex="-1" role="tab" aria-controls="1208:0" title="{!item.stageName}" data-aura-rendered-by="1287:0" href="javascript:void(0);" data-refid="tab-name">
+                                                                <span class="title">{!item.stageName}</span>
+                                                            </a>
+                                                        </li>
+                                                        <aura:set attribute="else">
+                                                            <aura:if isTrue="{!equals(item.stageName,v.currentStage)}">
+                                                                <li class="current tabs__item active uiTabItem runtime_sales_pathassistantPathAssistantTab" role="presentation" data-aura-class="uiTabItem runtime_sales_pathassistantPathAssistantTab" data-name="{!item.stageName}" data-walkthrough-target-hint="self">
+                                                                    <a onclick="{!c.onStageSelect}" class="tabHeader" aria-selected="true" data-tab-name="{!item.stageName}" tabindex="0" role="tab" title="{!item.stageName}" href="javascript:void(0);" data-refid="tab-name">
+                                                                        <span class="current"></span>
+                                                                        <span class="title">{!item.stageName}</span>
+                                                                    </a>
+                                                                </li>
+                                                                <aura:set attribute="else">
+                                                                    <li class="ahead tabs__item uiTabItem runtime_sales_pathassistantPathAssistantTab" role="presentation" data-aura-class="uiTabItem runtime_sales_pathassistantPathAssistantTab" data-name="{!item.stageName}" data-walkthrough-target-hint="self">
+                                                                        <a aura:id="3" onclick="{!c.onStageSelect}" class="tabHeader" aria-selected="false" data-tab-name="{!item.stageName}" tabindex="-1" role="tab" aria-controls="1247:0" title="{!item.stageName}" data-refid="tab-name">
+                                                                            <span class=""></span>
+                                                                            <span class="title">{!item.stageName}</span>
+                                                                        </a>
+                                                                    </li>
+                                                                </aura:set>
+                                                            </aura:if>
+                                                        </aura:set>
+                                                    </aura:if>
+											     </aura:if>
+                                                </aura:iteration> 
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

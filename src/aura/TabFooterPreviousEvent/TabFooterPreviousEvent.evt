@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event for previous button on footer in Tab wizard" >
+    <aura:attribute name="StageName" type="String"/>
+    
+</aura:event>

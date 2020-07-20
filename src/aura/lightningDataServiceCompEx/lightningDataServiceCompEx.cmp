@@ -1,0 +1,39 @@
+<!-- lightningDataServiceCompEx -->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">    
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="recordInfo" type="Object" />
+    <aura:attribute name="xyzRecord" type="Object"/>  
+    <force:recordData aura:id="recordHandler"
+                      recordId="{!v.recordId}"
+                      layoutType="FULL" 
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.recordInfo}" 
+                      targetFields="{!v.xyzRecord}"
+                      mode="EDIT"  
+                      fields="Name,Industry,Description"
+                      recordUpdated="{!c.handleRecordUpdated}"
+                      />
+    <div class="Record Details" style="padding:5px;">
+        <lightning:card iconName="standard:account" title="Edit Object">
+            <div class="slds-form--stacked">        
+                <div class="slds-form-element">
+                    <lightning:input type="text" label="Name" value="{!v.xyzRecord.Name}" />
+                </div>  
+                <div class="slds-form-element">
+                    <lightning:input type="text" label="Industry" value="{!v.xyzRecord.Industry}" />
+                </div>   
+                <div class="slds-form-element">
+                    <lightning:input type="text" label="Description" value="{!v.xyzRecord.Description}" />
+                </div>  
+                <div class="slds-form-element">
+                    <lightning:button variant="brand" label="Save"  onclick="{!c.saveRecordCntrlr}"/>
+                </div>
+            </div>   	
+            <aura:if isTrue="{!not(empty(v.recordSaveError))}">
+                <div class="recordError">
+                    {!v.recordSaveError}
+                </div>
+            </aura:if>
+        </lightning:card>
+    </div>
+</aura:component>

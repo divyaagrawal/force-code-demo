@@ -1,0 +1,9 @@
+<apex:page >
+ <apex:pageBlock title="User Status">
+     <apex:pageblockSection >
+     {! $user.firstname}
+     </apex:pageblockSection>
+ 
+ 
+ </apex:pageBlock>
+</apex:page>

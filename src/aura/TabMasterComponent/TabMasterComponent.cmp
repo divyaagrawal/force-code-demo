@@ -1,0 +1,80 @@
+<!--
+* @Component Name	  : TabMasterComponent 
+* @Story 			  : Launch Temporary Tab in Nav Bar POC
+* @Release 			  : Release
+* @Author             : 
+* @Version            : 1.0
+* @Date 		      : 08/10/2019 
+--> 
+<aura:component controller="TabController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:isUrlAddressable" access="global" >
+    <aura:attribute name="recordId" type="String" description="Client record Id"/>
+    <aura:attribute name="varOppId" type="String" description="Opportunity record Id"/>
+    <aura:attribute name="varCaoAppId" type="String" description="CAO Application record Id"/>
+    <aura:attribute name="varPaid" type="String" description="Product Account record Id"/>
+    <aura:attribute name="varStage" type="String" description="current stage of wizard passed as parameter"/>
+    
+    <aura:attribute name="sponsororCustodian" type="String"/>
+    <aura:attribute name="productType" type="String"/>
+    
+    <aura:attribute name="varTabData" type="TabDataWrapper"/>
+    <aura:attribute name="varCurrentStage" type="String" default=""/>
+    <aura:attribute name="varErrMsg" type="String"/>
+    <aura:attribute name="varSpinnerCls" type="String" default="slds-hide"/>
+    <aura:attribute name="varPrevFooterAction" type="String" default=""/>
+    <aura:attribute name="varNewStageFromPathHeader" type="String" default=""/>
+    
+    <aura:attribute name="varTabPathHeader" type="TabDataWrapper.TabPathHeaderWrapper[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:TabFooterContinueEvent" action="{!c.handleFooterContinue}"/>
+    <aura:handler event="c:TabMasterPathEvent" action="{!c.onPathHeaderStageChanged}"/>
+    
+    <div class="slds-p-top_none" style="background-color: rgb(255, 255, 255);" >  
+        <lightning:spinner aura:id="mySpinner" variant="brand" class="{!v.varSpinnerCls}" size="large" alternativeText="Processing ..."/>
+        
+        <div class="slds-page-header">
+            <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                    <h1>
+                        <span class="slds-page-header__title slds-truncate" title="Account Opening">Account Opening</span>
+                    </h1>
+                </div>
+            </div>
+        </div> 
+        <div aura:id="path">
+            <c:TabMasterPath currentStage="{!v.varCurrentStage}" tabPathHeader="{!v.varTabPathHeader}"/> 
+        </div>
+        <!-- Main Container -->
+        <div class="slds-p-horizontal_small">
+            <aura:if isTrue="{!not(empty(v.varErrMsg))}">
+                <c:TabMessageComponent varErrMsg="{!v.varErrMsg}" varType="error"/>
+            </aura:if>
+            
+            <aura:if isTrue="{!equals(v.varCurrentStage,'Getting Started')}">
+                <c:TabGettingStarted aura:id="gettingstarted" TabData="{!v.varTabData}"/>
+            </aura:if>
+           <aura:if isTrue="{!equals(v.varCurrentStage,'Details')}">
+                <c:TabSecond aura:id="details"/>
+            </aura:if>
+            <aura:if isTrue="{!equals(v.varCurrentStage,'Additional Details')}">
+                <c:TabThird aura:id="additionalDetails" />
+            </aura:if>
+            <aura:if isTrue="{!equals(v.varCurrentStage,'Confirmation')}">
+                <c:TabFinal aura:id="confirmation"  />
+            </aura:if> 
+           
+            <!--
+   <aura:if isTrue="{!v.varPageNumber==7}">
+                <c:NAOBeneficiary NAOData="{!v.varNAOData}"/>
+                <aura:set attribute="else">
+                    <div aura:id="cmpbody"/>
+                    
+                </aura:set>
+            </aura:if>
+            -->
+        </div>
+        <!-- Main Container End-->
+    </div> 
+    <c:TabFooter varCurrentPage="{!v.varCurrentStage}"/>
+    
+</aura:component>

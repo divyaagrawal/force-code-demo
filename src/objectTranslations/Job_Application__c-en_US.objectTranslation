@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Job Application</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Job Applications</value>
+    </caseValues>
+    <fields>
+        <label><!-- Average Rating --></label>
+        <name>Average_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate__c</name>
+        <relationshipLabel><!-- Job Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cover Letter --></label>
+        <name>Cover_Letter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Reviews --></label>
+        <name>Number_of_Reviews__c</name>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>Position__c</name>
+        <relationshipLabel><!-- Job Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Extend an Offer</masterLabel>
+            <translation><!-- Extend an Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hired</masterLabel>
+            <translation><!-- Hired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone Screen</masterLabel>
+            <translation><!-- Phone Screen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review Resume</masterLabel>
+            <translation><!-- Review Resume --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schedule Interviews</masterLabel>
+            <translation><!-- Schedule Interviews --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Rating --></label>
+        <name>Total_Rating__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

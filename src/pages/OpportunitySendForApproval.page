@@ -1,0 +1,37 @@
+<apex:page standardController="Opportunity"   sidebar="false" showHeader="false">
+ <apex:includeLightning />
+
+    <div id="lightning" />
+    <script>
+    window.onbeforeunload= function (event) {closeWindow();}
+    </script>
+    <script>
+    function closeWindow()
+    {     
+      window.opener.location.href = "/{!Opportunity.Id}";        
+      
+    }  
+    
+    function closePopup()
+    {     alert('close');
+      window.open('', '_self', '');
+window.close();
+      
+    }  
+    
+</script>
+      
+      
+    <script>
+        $Lightning.use("c:OpptunitySendForApprovalApp", function() {
+          $Lightning.createComponent("c:OpptunitySendForApproval",{ "recordId" : "{!$CurrentPage.parameters.id}"},
+         "lightning",
+          function(cmp)
+          {
+            $A.eventService.addHandler({ "event": "c:OpportunitySendForApprovalCloseEvent", "handler" : closePopup});
+          });
+        });
+    </script>  
+    
+    
+</apex:page>

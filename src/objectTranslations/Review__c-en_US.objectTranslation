@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Review</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reviews</value>
+    </caseValues>
+    <fields>
+        <label><!-- Assessment --></label>
+        <name>Assessment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Application --></label>
+        <name>Job_Application__c</name>
+        <relationshipLabel><!-- Reviews --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rating --></label>
+        <name>Rating__c</name>
+    </fields>
+    <layouts>
+        <layout>Review Layout</layout>
+        <sections>
+            <label><!-- Assessment --></label>
+            <section>Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- enter Invalid rating. Rating must be between 1 and 5 --></errorMessage>
+        <name>Rating_Scale_Rule</name>
+    </validationRules>
+</CustomObjectTranslation>

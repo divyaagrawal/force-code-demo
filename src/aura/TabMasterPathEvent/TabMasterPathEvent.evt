@@ -1,0 +1,11 @@
+<!--
+* @Component Name	  : TabMasterPathEvent
+* @Story 			  : Tab Path Header
+* @Release 			  : Release
+* @Author             : 
+* @Version            : 1.0
+* @Date 		      : 09/13/2019
+-->
+<aura:event type="APPLICATION" description="Event for Tab wizard Header" >
+    <aura:attribute name="StageName" type="String"/>
+</aura:event>

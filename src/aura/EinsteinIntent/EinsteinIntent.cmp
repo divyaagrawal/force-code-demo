@@ -1,0 +1,43 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" 
+                access="global" controller="EinsteinIntent">
+    
+    <aura:attribute name="modelName" type="String" default="YWZJSULWN26NN3LJ2BYNKM4T5E"/>
+    <aura:attribute name="textToAnlyze" type="String" default="Can I change my credit card"/>
+    <aura:attribute name="predectionResult" type="List[]"/>
+    
+    <form class="slds-form--stacked">          
+        <lightning:input aura:id="formInp" label="Enter text"
+                         name="Intent Text"
+                         value="{!v.textToAnlyze}"
+                         required="true"/> 
+        <lightning:button label="Predict " 
+                          class="slds-m-top--medium"
+                          variant="brand"
+                          onclick="{!c.Predict}"/>
+    </form>
+    
+    <table class="slds-table slds-table--bordered slds-table--striped" style="margin-top:30px;">
+        <thead>
+            <tr>
+                
+                <th>Label</th>
+                <th>Probability</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.predectionResult}" var="predectionResultVal" >
+                <tr>                
+                    <td>{!predectionResultVal.label}</td>
+                    
+                    <td>{!predectionResultVal.probability}</td>
+                </tr>
+                
+                
+            </aura:iteration>                            
+        </tbody>                  
+        
+    </table>
+    
+    
+</aura:component>
