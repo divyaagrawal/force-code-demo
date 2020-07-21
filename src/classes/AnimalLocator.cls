@@ -13,6 +13,7 @@ public class AnimalLocator{
 
             retVal = string.valueof(mapOfAnimals.get('name'));
         }
+        system.debug('Test');
         
         return retVal;
     }
