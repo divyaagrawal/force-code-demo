@@ -28,6 +28,12 @@ public class AnimalLocator{
             retVal = string.valueof(mapOfAnimals.get('name'));
         }
         
+         if (response.getStatusCode() == 1002) {
+            Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            Map<string,object> mapOfAnimals = (map<string,object>) results.get('animal');
+
+            retVal = string.valueof(mapOfAnimals.get('name'));
+        }
         return retVal;
     }
 }
