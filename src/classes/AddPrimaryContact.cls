@@ -19,6 +19,9 @@ public class AddPrimaryContact implements Queueable
          }
 
          System.debug('Test');
+         System.debug('Test');
+         System.debug('Test');
+         System.debug('Test');
          
          if(lstContact.size() >0 )
          {
